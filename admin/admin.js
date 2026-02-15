@@ -66,7 +66,8 @@ async function tryLogin() {
   errorEl.classList.add('hidden');
 
   try {
-    const res = await ghFetch('/user');
+    // Verify token by trying to read the repo (works with fine-grained tokens)
+    const res = await ghFetch('');
     if (!res.ok) throw new Error('Falsches Passwort. Bitte nochmal versuchen.');
 
     await res.json();
