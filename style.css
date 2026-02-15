@@ -1,0 +1,241 @@
+/* ── Reset & Base ───────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --pink:   #FF2D7E;
+  --yellow: #FFD63A;
+  --blue:   #1B9BFF;
+  --green:  #8DC63F;
+  --red:    #FF3C32;
+  --white:  #fff;
+  --dark:   #222;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Courier New', Courier, monospace;
+  color: var(--dark);
+  background: var(--yellow);
+  line-height: 1.6;
+}
+
+img { max-width: 100%; height: auto; }
+
+a { color: var(--blue); text-decoration: none; }
+a:hover { color: var(--green); }
+
+.hidden { display: none !important; }
+.loading { opacity: 0.5; font-style: italic; }
+
+/* ── Header ────────────────────────────────── */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--blue);
+  color: var(--white);
+  padding: 0.5rem 1rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.header-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.logo {
+  height: 50px;
+  width: auto;
+}
+
+nav {
+  display: flex;
+  gap: 0.25rem;
+  flex-wrap: wrap;
+  flex: 1;
+}
+
+nav a {
+  color: var(--red);
+  background: var(--yellow);
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 0.9rem;
+  transition: background 0.2s;
+}
+
+nav a:hover {
+  background: var(--green);
+  color: var(--white);
+}
+
+.social-links {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.social-links a {
+  color: var(--yellow);
+  transition: color 0.2s;
+}
+
+.social-links a:hover {
+  color: var(--green);
+}
+
+/* ── Sections ──────────────────────────────── */
+.section {
+  padding: 3rem 1.5rem;
+}
+
+.section-alt {
+  background: var(--white);
+}
+
+.section-inner {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.section-inner h1,
+.section-inner h2 {
+  color: var(--blue);
+  margin-bottom: 1rem;
+}
+
+.section-inner h1 {
+  font-size: 2rem;
+}
+
+.section-inner p,
+.section-inner li {
+  margin-bottom: 0.75rem;
+}
+
+/* Hero image in Hallo section */
+.section-inner .hero-img {
+  display: block;
+  max-width: 350px;
+  margin: 1.5rem auto;
+  border-radius: 12px;
+  border: 4px dashed var(--red);
+  transform: rotate(-1deg);
+}
+
+/* ── Spotify ───────────────────────────────── */
+.spotify-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+  max-width: 500px;
+}
+
+/* ── Dates / Termine ───────────────────────── */
+#dates-list {
+  list-style: none;
+  padding: 0;
+}
+
+#dates-list li {
+  background: var(--white);
+  border-left: 5px solid var(--green);
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.75rem;
+  border-radius: 4px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: baseline;
+}
+
+.date-when {
+  font-weight: bold;
+  color: var(--blue);
+  min-width: 110px;
+}
+
+.date-where {
+  color: var(--dark);
+}
+
+.date-venue {
+  color: var(--pink);
+  font-style: italic;
+}
+
+.date-note {
+  width: 100%;
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.date-link {
+  margin-left: auto;
+}
+
+.date-link a {
+  background: var(--green);
+  color: var(--white);
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+}
+
+.date-link a:hover {
+  background: var(--blue);
+}
+
+.date-past {
+  opacity: 0.5;
+}
+
+/* ── Kontakt ───────────────────────────────── */
+.contact-link {
+  display: inline-block;
+  background: var(--red);
+  color: var(--white) !important;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-top: 0.5rem;
+  transition: background 0.2s;
+}
+
+.contact-link:hover {
+  background: var(--pink);
+}
+
+/* ── Footer ────────────────────────────────── */
+footer {
+  text-align: center;
+  padding: 1.5rem;
+  background: var(--blue);
+  color: var(--white);
+  font-size: 0.85rem;
+}
+
+.admin-link {
+  color: rgba(255,255,255,0.4);
+  font-size: 0.75rem;
+}
+
+.admin-link:hover {
+  color: var(--white);
+}
+
+/* ── Responsive ────────────────────────────── */
+@media (max-width: 600px) {
+  .header-inner { justify-content: center; text-align: center; }
+  nav { justify-content: center; }
+  .social-links { justify-content: center; width: 100%; }
+  .section { padding: 2rem 1rem; }
+  .section-inner h1 { font-size: 1.5rem; }
+}

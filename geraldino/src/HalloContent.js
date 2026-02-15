@@ -3,6 +3,13 @@ import ReactMarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
 import halloContent from './text/Hallo.md';
 
+const transformURL = (uri) => {
+    if (!uri.startsWith('http')) {
+      return `https://raw.githubusercontent.com/leonmpunkt/geraldino/main/geraldino/src/images/${uri}`;
+    }
+    return uri;
+  };
+
 const Hallo = () => {
     const [markdown, setMarkdown] = useState('');
 

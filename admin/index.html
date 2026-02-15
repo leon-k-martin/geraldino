@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Geraldino – Admin</title>
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+  <!-- Login screen -->
+  <div id="login-screen" class="screen">
+    <div class="login-box">
+      <h1>🎸 Geraldino Admin</h1>
+      <p>Melde dich mit deinem GitHub Personal Access Token an, um Inhalte zu bearbeiten.</p>
+      <input type="password" id="token-input" placeholder="ghp_xxxxxxxxxxxx">
+      <button id="login-btn">Anmelden</button>
+      <p id="login-error" class="error hidden"></p>
+      <details>
+        <summary>Wie bekomme ich einen Token?</summary>
+        <ol>
+          <li>Gehe zu <a href="https://github.com/settings/tokens/new" target="_blank">github.com/settings/tokens/new</a></li>
+          <li>Name: z.B. "Geraldino Website"</li>
+          <li>Ablaufdatum: nach Wahl</li>
+          <li>Berechtigung: Haken bei <strong>repo</strong> (voller Zugriff)</li>
+          <li>Klicke "Generate token" und kopiere den Token hierher</li>
+        </ol>
+      </details>
+    </div>
+  </div>
+
+  <!-- Admin dashboard -->
+  <div id="admin-screen" class="screen hidden">
+    <header>
+      <h1>🎸 Geraldino Admin</h1>
+      <div class="header-actions">
+        <span id="user-info"></span>
+        <button id="logout-btn" class="btn-small">Abmelden</button>
+      </div>
+    </header>
+
+    <nav class="admin-nav">
+      <button class="tab active" data-tab="content">📝 Texte</button>
+      <button class="tab" data-tab="dates">📅 Termine</button>
+    </nav>
+
+    <!-- Content editor tab -->
+    <div id="tab-content" class="tab-panel active">
+      <div class="file-list">
+        <h2>Texte bearbeiten</h2>
+        <div id="content-files"></div>
+      </div>
+      <div id="editor-panel" class="editor-panel hidden">
+        <div class="editor-header">
+          <h3 id="editor-filename"></h3>
+          <div class="editor-actions">
+            <button id="save-content-btn" class="btn-primary">💾 Speichern</button>
+            <button id="cancel-edit-btn" class="btn-small">Abbrechen</button>
+          </div>
+        </div>
+        <div class="editor-help">
+          <details>
+            <summary>Formatierung</summary>
+            <code># Überschrift</code> · <code>## Unterüberschrift</code> · <code>**fett**</code> · <code>*kursiv*</code> · <code>[Link](url)</code> · <code>![Bild](pfad)</code>
+          </details>
+        </div>
+        <textarea id="content-editor" rows="20"></textarea>
+        <div id="editor-preview" class="preview"></div>
+        <p id="editor-status" class="status hidden"></p>
+      </div>
+    </div>
+
+    <!-- Dates editor tab -->
+    <div id="tab-dates" class="tab-panel hidden">
+      <div class="dates-header">
+        <h2>Termine verwalten</h2>
+        <button id="add-date-btn" class="btn-primary">+ Neuer Termin</button>
+      </div>
+      <div id="dates-list"></div>
+
+      <!-- Date form (add/edit) -->
+      <div id="date-form" class="hidden">
+        <h3 id="date-form-title">Neuer Termin</h3>
+        <label>Datum <input type="date" id="date-date" required></label>
+        <label>Stadt <input type="text" id="date-city" placeholder="Nürnberg"></label>
+        <label>Veranstaltungsort <input type="text" id="date-venue" placeholder="Kulturladen"></label>
+        <label>Anmerkung <input type="text" id="date-note" placeholder="Familienkonzert ab 15 Uhr"></label>
+        <label>Link <input type="url" id="date-link" placeholder="https://tickets.example.com"></label>
+        <div class="form-actions">
+          <button id="save-date-btn" class="btn-primary">💾 Speichern</button>
+          <button id="cancel-date-btn" class="btn-small">Abbrechen</button>
+        </div>
+        <p id="date-status" class="status hidden"></p>
+      </div>
+    </div>
+  </div>
+
+  <script src="admin.js"></script>
+</body>
+</html>
