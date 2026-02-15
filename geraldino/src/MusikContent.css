@@ -1,6 +1,0 @@
-.spotify-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 100px; /* Adjust the padding between items */
-    padding: 10px;
-}
