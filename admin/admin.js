@@ -7,9 +7,9 @@ const BRANCH     = 'main';
 const API_BASE   = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}`;
 
 const CONTENT_FILES = [
-  { path: 'content/hallo.md', label: 'Hallo (Startseite)',   desc: 'Begrüßungstext und Foto' },
-  { path: 'content/musik.md', label: 'Musik',                desc: 'Text über der Spotify-Sektion' },
-  { path: 'content/bio.md',   label: 'Über mich (Biografie)', desc: 'Biografie-Text' },
+  { path: 'content/hallo.md', label: 'Startseite',    desc: 'Der Begrüßungstext und das Foto ganz oben' },
+  { path: 'content/musik.md', label: 'Musik',          desc: 'Der Text über den Spotify-Playern' },
+  { path: 'content/bio.md',   label: 'Über mich',      desc: 'Deine Biografie weiter unten auf der Seite' },
 ];
 
 let token = '';
@@ -67,11 +67,10 @@ async function tryLogin() {
 
   try {
     const res = await ghFetch('/user');
-    if (!res.ok) throw new Error('Ungültiger Token');
+    if (!res.ok) throw new Error('Falsches Passwort. Bitte nochmal versuchen.');
 
-    const user = await res.json();
+    await res.json();
     localStorage.setItem('geraldino_token', token);
-    document.getElementById('user-info').textContent = `👤 ${user.login}`;
     showScreen('admin');
     loadContentList();
     loadDatesList();

@@ -99,6 +99,12 @@ body {
   margin-bottom: 0.3rem;
 }
 
+.login-hint {
+  margin-top: 1rem;
+  font-size: 0.8rem;
+  color: #999;
+}
+
 /* ── Admin layout ──────────────────────────── */
 #admin-screen header {
   background: var(--blue);
@@ -253,6 +259,25 @@ body {
   padding: 0.15rem 0.35rem;
   border-radius: 3px;
   font-size: 0.8rem;
+}
+
+.format-help {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0;
+}
+
+.format-help li {
+  margin-bottom: 0.4rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.format-note {
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+  color: #888;
 }
 
 #content-editor {

@@ -12,20 +12,11 @@
   <div id="login-screen" class="screen">
     <div class="login-box">
       <h1>🎸 Geraldino Admin</h1>
-      <p>Melde dich mit deinem GitHub Personal Access Token an, um Inhalte zu bearbeiten.</p>
-      <input type="password" id="token-input" placeholder="ghp_xxxxxxxxxxxx">
+      <p>Gib dein Passwort ein, um Texte und Termine auf der Website zu bearbeiten.</p>
+      <input type="password" id="token-input" placeholder="Passwort eingeben">
       <button id="login-btn">Anmelden</button>
       <p id="login-error" class="error hidden"></p>
-      <details>
-        <summary>Wie bekomme ich einen Token?</summary>
-        <ol>
-          <li>Gehe zu <a href="https://github.com/settings/tokens/new" target="_blank">github.com/settings/tokens/new</a></li>
-          <li>Name: z.B. "Geraldino Website"</li>
-          <li>Ablaufdatum: nach Wahl</li>
-          <li>Berechtigung: Haken bei <strong>repo</strong> (voller Zugriff)</li>
-          <li>Klicke "Generate token" und kopiere den Token hierher</li>
-        </ol>
-      </details>
+      <p class="login-hint">Du hast dein Passwort nicht? Frag bei Leon nach.</p>
     </div>
   </div>
 
@@ -34,7 +25,7 @@
     <header>
       <h1>🎸 Geraldino Admin</h1>
       <div class="header-actions">
-        <span id="user-info"></span>
+        <a href="../" class="btn-small">← Zur Website</a>
         <button id="logout-btn" class="btn-small">Abmelden</button>
       </div>
     </header>
@@ -60,8 +51,16 @@
         </div>
         <div class="editor-help">
           <details>
-            <summary>Formatierung</summary>
-            <code># Überschrift</code> · <code>## Unterüberschrift</code> · <code>**fett**</code> · <code>*kursiv*</code> · <code>[Link](url)</code> · <code>![Bild](pfad)</code>
+            <summary>Formatierungs-Hilfe</summary>
+            <ul class="format-help">
+              <li><code># Text</code> → <strong>Große Überschrift</strong></li>
+              <li><code>## Text</code> → <strong>Kleinere Überschrift</strong></li>
+              <li><code>**Text**</code> → <strong>Fetter Text</strong></li>
+              <li><code>*Text*</code> → <em>Kursiver Text</em></li>
+              <li><code>[Klick hier](https://example.com)</code> → Ein Link</li>
+              <li><code>![Foto](static/img/foto.jpg)</code> → Ein Bild einfügen</li>
+            </ul>
+            <p class="format-note">Eine Leerzeile = neuer Absatz</p>
           </details>
         </div>
         <textarea id="content-editor" rows="20"></textarea>
@@ -81,11 +80,11 @@
       <!-- Date form (add/edit) -->
       <div id="date-form" class="hidden">
         <h3 id="date-form-title">Neuer Termin</h3>
-        <label>Datum <input type="date" id="date-date" required></label>
-        <label>Stadt <input type="text" id="date-city" placeholder="Nürnberg"></label>
-        <label>Veranstaltungsort <input type="text" id="date-venue" placeholder="Kulturladen"></label>
-        <label>Anmerkung <input type="text" id="date-note" placeholder="Familienkonzert ab 15 Uhr"></label>
-        <label>Link <input type="url" id="date-link" placeholder="https://tickets.example.com"></label>
+        <label>Datum * <input type="date" id="date-date" required></label>
+        <label>Stadt * <input type="text" id="date-city" placeholder="z.B. Nürnberg" required></label>
+        <label>Wo genau? <input type="text" id="date-venue" placeholder="z.B. Kulturladen"></label>
+        <label>Zusätzliche Info <input type="text" id="date-note" placeholder="z.B. Familienkonzert ab 15 Uhr"></label>
+        <label>Link (z.B. Tickets) <input type="url" id="date-link" placeholder="https://..."></label>
         <div class="form-actions">
           <button id="save-date-btn" class="btn-primary">💾 Speichern</button>
           <button id="cancel-date-btn" class="btn-small">Abbrechen</button>
