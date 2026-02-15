@@ -97,17 +97,23 @@ async function getFile(path) {
   const res = await ghFetch(`/contents/${path}?ref=${BRANCH}`);
   if (!res.ok) throw new Error(`Datei nicht gefunden: ${path}`);
   const data = await res.json();
+  // Decode base64 → UTF-8 properly
+  const bytes = Uint8Array.from(atob(data.content.replace(/\n/g, '')), c => c.charCodeAt(0));
+  const decoded = new TextDecoder().decode(bytes);
   return {
     path: data.path,
     sha: data.sha,
-    content: atob(data.content.replace(/\n/g, '')),
+    content: decoded,
   };
 }
 
 async function putFile(path, content, sha, message) {
+  // Encode UTF-8 → base64 properly
+  const bytes = new TextEncoder().encode(content);
+  const base64 = btoa(String.fromCharCode(...bytes));
   const body = {
     message,
-    content: btoa(unescape(encodeURIComponent(content))),
+    content: base64,
     branch: BRANCH,
   };
   if (sha) body.sha = sha;
